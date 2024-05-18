@@ -65,23 +65,47 @@ def obtener_datos_de_mercadolibre(product):
     return products_list
 
 
+# @app.route('/', methods=['GET', 'POST'])
+# def index():
+#     if request.method == 'POST':
+#         product = request.form['product']
+#         # Buscar productos en ambas tiendas
+#         products_la_tienda = obtener_datos_la_tienda_en_linea(product)
+#         products_mercado_libre = obtener_datos_de_mercadolibre(product)
+#         all_products = products_la_tienda + products_mercado_libre
+
+#         products_by_store = defaultdict(list)
+#         for product in all_products:
+#             products_by_store[product['store']].append(product)
+        
+#         lowest_priced_product = encontrar_precio_mas_bajo(all_products)
+
+#         return render_template('results.html', products_by_store=products_by_store, lowest_priced_product=lowest_priced_product)
+#     return render_template('index.html')
+
+from flask import Flask, render_template, request
+import requests
+
+app = Flask(__name__)
+
+def fetch_products():
+    # URL de la Fake Store API para obtener todos los productos
+    url = "https://fakestoreapi.com/products"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return []
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        product = request.form['product']
-        # Buscar productos en ambas tiendas
-        products_la_tienda = obtener_datos_la_tienda_en_linea(product)
-        products_mercado_libre = obtener_datos_de_mercadolibre(product)
-        all_products = products_la_tienda + products_mercado_libre
+    products = fetch_products()
+    search_query = request.form.get('search', '')
 
-        products_by_store = defaultdict(list)
-        for product in all_products:
-            products_by_store[product['store']].append(product)
-        
-        lowest_priced_product = encontrar_precio_mas_bajo(all_products)
+    if search_query:
+        products = [product for product in products if search_query.lower() in product['title'].lower()]
 
-        return render_template('results.html', products_by_store=products_by_store, lowest_priced_product=lowest_priced_product)
-    return render_template('index.html')
+    return render_template('index.html', products=products, search_query=search_query)
 
 if __name__ == '__main__':
     app.run(debug=True)
