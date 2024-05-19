@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+html{
+    font-size: 62.5%
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.nav-bar{
+    width: 100vw;
+    height: 10vh;
+    background-color: #836FFF;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    
+}
+
+.logo{
+    width: 150px;
+    height: auto;
+    margin-right: 1rem;
+    cursor: pointer; /* Mostrar cursor de mano */
+
+}
+
+.list{
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    
+    
+}
+
+.item-list{
+    margin: 1.5rem; /* Espaciado entre los elementos de la lista */
+    cursor: pointer; /* Mostrar cursor de mano */
+}
+
+.item-list:hover{
+    color: #211951;
+    background-color: #a798ff;
+    border-radius: 10px;
+}
+
+.padre-producto{
+    width: 100vw;
+    height: 80vh;
+    background-color: #211951;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.buscar-producto{
+    
+    width: 250px;
+    height: 250px;
+    background-color: #fffeac;
+    border-radius: 50%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px; 
+    transition: transform 0.3s ease; /* Transición suave */
+    margin-left: 100px;
+    margin-right: 100px;
+    
+
+
+}
+
+
+.buscar-producto h2{
+    margin-bottom: 10px;
+    text-align: center;
+    color: #211951;
+}
+/* Estilo de la barra de búsqueda */
+.search-bar form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-bar input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 80%;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+.search-bar button {
+    padding: 10px;
+    width: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+.search-bar input:hover{
+    border-color: #555; /* Cambia el color del borde al pasar el mouse */
+
+}
+
+.search-bar button:hover {
+    border-color: #555; /* Cambia el color del borde al pasar el mouse */
+    color: #211951;
+    background-color: #a798ff;
+}
+
+
+
+.pie-pagina{
+
+    width: 100vw;
+    height: 10vh;
+    background-color: #a7a5a5;
+    color: #211951;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+
+
+
+}
+
+.texto-pie:hover{
+    color: #5335fa ;
+    border-radius: 10px;
+}
+
+
+.izrq{
+    width: 30vw;
+    height: 60vh;
+    background-color: red;
+    border-radius: 15px;
+    transition: transform 0.3s ease; /* Transición suave */
+
+    
+}
+
+
+.dere{
+    width: 30vw;
+    height: 60vh;
+    background-color: red;
+    border-radius: 15px;
+    transition: transform 0.3s ease; /* Transición suave */
+
+}
+
+
+.izrq:hover {
+    transform: scale(1.1); /* Aumenta el tamaño del contenedor */
+    
+
+}
+
+.dere:hover {
+    transform: scale(1.1); /* Aumenta el tamaño del contenedor */
+   
+
+}
+
+.imagen-izrq{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+
+}
+
+
+.imagen-dere{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+
+}
+
+.texto-pie{
+    
+    margin-right: 1rem;
+    cursor: pointer; /* Mostrar cursor de mano */
+
+}
+
+.redes{
+    
+    display: flex;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    
+    
+}
+
+.social-icon{
+    margin: 1.5rem; /* Espaciado entre los elementos de la lista */
+    cursor: pointer; /* Mostrar cursor de mano */
+}
+
+
+
+
+.social-icon i.fab.fa-facebook {
+    color: #3b5998;  
+}
+
+.social-icon i.fab.fa-twitter {
+    color: #1da1f2; 
+}
+
+.social-icon i.fab.fa-instagram {
+    color: #c13584; 
+}
+
+.search-results{
+    background-color: #483d86;
+    font-size: 1.5rem;
+}
+
+.search-results h2{
+    color: #060124;
+}
+
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-radius: 15px;
+    
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: calc(33% - 20px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: #836FFF;
+    transition: transform 0.3s ease; /* Transición suave */
+    cursor: pointer; /* Mostrar cursor de mano */
+
+
+
+}
+
+.product:hover {
+    transform: scale(1.1); /* Aumenta el tamaño del contenedor */
+    /*box-shadow: 0 8px 16px #836FFF;  Sombra más grande */
+    
+
+}
+
+.product img {
+    max-width: 100%;
+}
+
+.product h3 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+}
+
+.product p {
+    margin: 5px 0;
+}

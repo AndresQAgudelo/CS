@@ -3,48 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Product Price Comparator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .product {
-            border: 1px solid #ccc;
-            padding: 16px;
-            margin: 16px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .product img {
-            max-width: 100px;
-            display: block;
-            margin-bottom: 16px;
-        }
-        .search-bar {
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
-    <h1>Product Price Comparator</h1>
-    <div class="search-bar">
-        <form method="POST">
-            <input type="text" name="search" placeholder="Search for products" value="{{ search_query }}">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-    {% for product in products %}
-    <div class="product">
-        <h2>{{ product.title }}</h2>
-        {% if product.image %}
-            <img src="{{ product.image }}" alt="{{ product.title }}">
-        {% endif %}
-        <p><strong>Price:</strong> {{ product.price }}</p>
-        <p><strong>Store:</strong> {{ product.store }}</p>
-        {% if product.description %}
-            <p><strong>Description:</strong> {{ product.description }}</p>
-        {% endif %}
-    </div>
-    {% endfor %}
+
+
+</head>
+<body>
+
+    <header class="nav-bar">
+
+       <img class="logo" src="static/images/logo.png" alt="">
+
+        <ul class="list">
+            <li class="item-list"> Inicio</li>
+            <li class="item-list"> Categorias</li>
+            <li class="item-list"> Ofertas</li>
+            <li class="item-list"> Contacto</li>
+        </ul>
+
+    </header>
+
+    <main class="padre-producto">
+
+        <div class="izrq">
+
+            <img class="imagen-izrq" src="static/images/gafas.jpg" alt="">
+
+        </div>
+
+        <div class="buscar-producto">
+
+            <h2>Producto</h2>
+            <div class="search-bar">
+                <form method="POST">
+                    <input type="text" name="search" placeholder="Buscar Productos" value="{{ search_query }}">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="dere">
+
+            <img class="imagen-dere" src="static/images/tenis.jpg" alt="">
+
+        </div>
+
+    </main>
+
+    {% if products %}
+    <section class="search-results">
+        <h2>Resultados Obtenidos:</h2>
+        <br>
+        
+        <div class="products-grid">
+            {% for product in products %}
+            <div class="product">
+                <h3>{{ product.title }}</h3>
+                {% if product.image %}
+                <img src="{{ product.image }}" alt="{{ product.title }}">
+                {% endif %}
+                <p><strong>Price:</strong> {{ product.price }}</p>
+                <p><strong>Store:</strong> {{ product.store }}</p>
+                <br>
+                {% if product.description %}
+                <p><strong>Description:</strong> {{ product.description }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+
+
+    <footer class="pie-pagina">
+
+        <h1 class="texto-pie"> BargaHunt</h1>
+
+        <div class="redes">
+        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      
+        </div>
+
+    </footer>
+
+
 </body>
 </html>
