@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+
+
 def obtener_datos_de_mercadolibre(product):
     url = f'https://listado.mercadolibre.com.co/{product}#D[A:{product}]'
     headers = {
@@ -19,4 +21,9 @@ def obtener_datos_de_mercadolibre(product):
             products_list.append({'title': nombre_producto, 'price': precio_producto, 'store': 'Mercado Libre'})
     else:
         print('No se pudo acceder al sitio, código de estado:', response.status_code)
-    return products_list
+    
+    # Ordenar la lista de productos de menor a mayor precio
+    productos_ordenados = sorted(products_list, key=lambda x: float(x['price'].replace('.', '').replace(',', '.')))
+
+    
+    return productos_ordenados[:5]
